@@ -21,6 +21,7 @@ export default class FileInput extends React.Component {
     }
   }
   handleChange = e => {
+    const initialEvent = Object.assign({}, e);
     const files = [];
     for (let i = 0; i < e.target.files.length; i++) {
       // Convert to Array.
@@ -58,7 +59,7 @@ export default class FileInput extends React.Component {
     })))
     .then(zippedResults => {
       // Run the callback after all files have been read.
-      this.props.onChange(e, zippedResults);
+      this.props.onChange(initialEvent, zippedResults);
     });
   }
   triggerInput = e => {
